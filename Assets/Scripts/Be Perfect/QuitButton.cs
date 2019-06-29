@@ -4,14 +4,11 @@ using UnityEngine;
 
 namespace BePerfect
 { 
-    public class RedButton : MonoBehaviour
+    public class QuitButton : MonoBehaviour
     {
-        [SerializeField]
-        private Crystal crystal;
-
         public void OnClick()
         {
-            crystal.ActivateColour(Colour.Red);
+            Application.Quit();
         }
     }
 }

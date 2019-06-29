@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace BePerfect
-{
-    public class YellowButton : MonoBehaviour
+{ 
+    public class Button : MonoBehaviour
     {
+        [SerializeField]
+        private Colour colour;
+
         [SerializeField]
         private Crystal crystal;
 
         public void OnClick()
         {
-            crystal.ActivateColour(Colour.Yellow);
+            crystal.ToggleColour(colour);
         }
     }
 }
