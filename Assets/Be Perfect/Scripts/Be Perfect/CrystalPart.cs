@@ -25,7 +25,7 @@ namespace BePerfect
             }
         }
 
-        public void Activate()
+        public void ActivateColour(Colour colour)
         {
             renderer.material = materials[colour];
             active = true;

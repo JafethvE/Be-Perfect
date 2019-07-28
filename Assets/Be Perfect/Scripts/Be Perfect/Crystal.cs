@@ -7,27 +7,59 @@ namespace BePerfect
     public class Crystal : MonoBehaviour
     {
         [SerializeField]
-        private ColourCrystalPartDictionary colouredParts;
+        private CrystalPart[] colourSegments;
 
-        public void ActivateColour(Colour colour)
-        {
-            colouredParts[colour].Activate();
-        }
+        private Colour firstColour, secondColour, thirdColour;
 
-        public void DeactivateColour(Colour colour)
+        public void ActivateFistColour(Colour colour)
         {
-            colouredParts[colour].Deactivate();
-        }
-
-        public void ToggleColour(Colour colour)
-        {
-            if(colouredParts[colour].Active)
+            firstColour = colour;
+            foreach(CrystalPart crystalPart in colourSegments)
             {
-                colouredParts[colour].Deactivate();
+                crystalPart.ActivateColour(firstColour);
             }
-            else
+        }
+
+        public void ActivateSecondColour(Colour colour)
+        {
+            int i = 1;
+            secondColour = colour;
+            foreach (CrystalPart crystalPart in colourSegments)
             {
-                colouredParts[colour].Activate();
+                if(i == 1)
+                {
+                    crystalPart.ActivateColour(secondColour);
+                    i++;
+                }
+                else if(i == 2)
+                {
+                    crystalPart.ActivateColour(firstColour);
+                    i = 1;
+                }
+            }
+        }
+
+        public void ActivateThirdColour(Colour colour)
+        {
+            int i = 1;
+            thirdColour = colour;
+            foreach (CrystalPart crystalPart in colourSegments)
+            {
+                if (i == 1)
+                {
+                    crystalPart.ActivateColour(thirdColour);
+                    i++;
+                }
+                else if (i == 2)
+                {
+                    crystalPart.ActivateColour(secondColour);
+                    i++;
+                }
+                else if(i == 3)
+                {
+                    crystalPart.ActivateColour(firstColour);
+                    i = 1;
+                }
             }
         }
     }
